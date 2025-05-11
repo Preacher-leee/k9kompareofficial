@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import React from 'react';
 import './splash.css';
 
 export const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
@@ -24,3 +25,5 @@ export const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
     </div>
   );
 };
+
+export default SplashScreen; 
