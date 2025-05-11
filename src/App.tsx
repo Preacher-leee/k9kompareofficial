@@ -15,10 +15,10 @@ import Cancel from './pages/checkout/Cancel';
 import NotFound from './pages/NotFound';
 
 // Components
-import { DoggoBot } from './components/chatbot/DoggoBot';
-import { SplashScreen }from './components/animations/SplashScreen';
-import { LoadingScreen } from './components/animations/LoadingScreen';
-import { NewsletterPopup } from './components/newsletter/NewsletterPopup';
+import DoggoBot from './components/chatbot/DoggoBot';
+import SplashScreen from './components/animations/SplashScreen';
+import LoadingScreen from './components/animations/LoadingScreen';
+import NewsletterPopup from './components/newsletter/NewsletterPopup';
 
 // Context
 import DogProvider from './context/DogContext';
