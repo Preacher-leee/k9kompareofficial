@@ -106,3 +106,5 @@ export const NewsletterPopup = () => {
     </div>
   );
 };
+
+export default NewsletterPopup;
