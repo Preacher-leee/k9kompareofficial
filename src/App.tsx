@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 // Layouts
@@ -19,19 +19,15 @@ import DoggoBot from './components/chatbot/DoggoBot';
 import { SplashScreen } from './components/animations/SplashScreen';
 import { LoadingScreen } from './components/animations/LoadingScreen';
 import { NewsletterPopup } from './components/newsletter/NewsletterPopup';
-import PageTransition from './components/PageTransition';
 
 // Context
 import { DogProvider } from './context/DogContext';
 
 export function App() {
   const location = useLocation();
-  const navigate = useNavigate();
   const [showSplash, setShowSplash] = useState(true);
   const [showLoading, setShowLoading] = useState(false);
   const [showContent, setShowContent] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [nextPath, setNextPath] = useState('');
 
   useEffect(() => {
     // Handle animation sequence
@@ -49,19 +45,6 @@ export function App() {
     setShowContent(true);
   };
 
-  const handleNavigation = (path: string) => {
-    setIsTransitioning(true);
-    setNextPath(path);
-  };
-
-  const handleTransitionComplete = () => {
-    setIsTransitioning(false);
-    if (nextPath) {
-      navigate(nextPath);
-      setNextPath('');
-    }
-  };
-
   if (showSplash) {
     return <SplashScreen onComplete={handleSplashComplete} />;
   }
@@ -72,41 +55,21 @@ export function App() {
 
   return (
     <DogProvider>
-      {isTransitioning ? (
-        <PageTransition onTransitionComplete={handleTransitionComplete}>
-          <Layout>
-            <AnimatePresence mode="wait">
-              <Routes location={location} key={location.pathname}>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/kompare" element={<Kompare />} />
-                <Route path="/facts" element={<Facts />} />
-                <Route path="/checkout/success" element={<Success />} />
-                <Route path="/checkout/cancel" element={<Cancel />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </AnimatePresence>
-            <DoggoBot />
-            <NewsletterPopup />
-          </Layout>
-        </PageTransition>
-      ) : (
-        <Layout>
-          <AnimatePresence mode="wait">
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/kompare" element={<Kompare />} />
-              <Route path="/facts" element={<Facts />} />
-              <Route path="/checkout/success" element={<Success />} />
-              <Route path="/checkout/cancel" element={<Cancel />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </AnimatePresence>
-          <DoggoBot />
-          <NewsletterPopup />
-        </Layout>
-      )}
+      <Layout>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/kompare" element={<Kompare />} />
+            <Route path="/facts" element={<Facts />} />
+            <Route path="/checkout/success" element={<Success />} />
+            <Route path="/checkout/cancel" element={<Cancel />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AnimatePresence>
+        <DoggoBot />
+        <NewsletterPopup />
+      </Layout>
     </DogProvider>
   );
 }
