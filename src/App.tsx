@@ -3,25 +3,25 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 // Layouts
-import Layout from './components/layout/Layout';
+import Layout from '../../components/layout/Layout';
 
 // Pages
-import Home from './pages/Home';
-import About from './pages/About';
-import Kompare from './pages/Kompare';
-import Facts from './pages/Facts';
-import Success from './pages/checkout/Success';
-import Cancel from './pages/checkout/Cancel';
-import NotFound from './pages/NotFound';
+import Home from '../../pages/Home';
+import About from '../../pages/About';
+import Kompare from '../../pages/Kompare';
+import Facts from '../../pages/Facts';
+import Success from '../../pages/checkout/Success';
+import Cancel from '../../pages/checkout/Cancel';
+import NotFound from '../../pages/NotFound';
 
 // Components
-import DoggoBot from './components/chatbot/DoggoBot';
-import { SplashScreen } from './components/animations/SplashScreen';
-import { LoadingScreen } from './components/animations/LoadingScreen';
-import { NewsletterPopup } from './components/newsletter/NewsletterPopup';
+import DoggoBot from '../../components/chatbot/DoggoBot';
+import { SplashScreen } from '../../components/animations/SplashScreen';
+import { LoadingScreen } from '../../components/animations/LoadingScreen';
+import { NewsletterPopup } from '../../components/newsletter/NewsletterPopup';
 
 // Context
-import { DogProvider } from './context/DogContext';
+import { DogProvider } from '../../context/DogContext';
 
 export function App() {
   const location = useLocation();
