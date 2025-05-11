@@ -1,47 +1,23 @@
-import { useEffect } from 'react';
-import './loading.css';
+import React from 'react';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import '../loading.css';
 
-export const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      onComplete();
-    }, 2000); // Adjust timing as needed
+interface LoadingScreenProps {
+  isLoading: boolean;
+}
 
-    return () => clearTimeout(timer);
-  }, [onComplete]);
+const LoadingScreen: React.FC<LoadingScreenProps> = ({ isLoading }) => {
+  if (!isLoading) return null;
 
   return (
-    <div className="loading-container">
-      <div className="loading-animation">
-        <div className="paw-print-1">
-          <div className="pad large"></div>
-          <div className="pad small-1"></div>
-          <div className="pad small-2"></div>
-          <div className="pad small-3"></div>
-          <div className="pad small-4"></div>
-        </div>
-        <div className="paw-print-2">
-          <div className="pad large"></div>
-          <div className="pad small-1"></div>
-          <div className="pad small-2"></div>
-          <div className="pad small-3"></div>
-          <div className="pad small-4"></div>
-        </div>
-        <div className="paw-print-3">
-          <div className="pad large"></div>
-          <div className="pad small-1"></div>
-          <div className="pad small-2"></div>
-          <div className="pad small-3"></div>
-          <div className="pad small-4"></div>
-        </div>
-        <div className="paw-print-4">
-          <div className="pad large"></div>
-          <div className="pad small-1"></div>
-          <div className="pad small-2"></div>
-          <div className="pad small-3"></div>
-          <div className="pad small-4"></div>
-        </div>
+    <div className="container">
+      <h1 className="title">Finding your pet...</h1>
+      <div className="loader">
+        <span className="icon left-paw fa fa-paw"></span>
+        <span className="icon right-paw fa fa-paw"></span>
       </div>
     </div>
   );
 };
+
+export default LoadingScreen;
