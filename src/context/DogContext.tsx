@@ -130,3 +130,5 @@ export function useDog() {
   }
   return context;
 }
+
+export default DogProvider;
